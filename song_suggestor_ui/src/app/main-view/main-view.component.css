@@ -1,0 +1,32 @@
+
+
+.content-input {
+    text-align: center;
+    width: 70vw;
+    margin-left: 15vw;
+    margin-right: 15vw;
+}
+
+.text-input {
+    width: 45%;
+    visibility: hidden;
+    display: none;
+}
+
+.lyrics-input-div {
+    margin-top: 20px;
+}
+
+.cta-button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+:host ::ng-deep .p-progress-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Ensure it appears on top of other elements */
+  }
+  

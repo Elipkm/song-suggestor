@@ -1,0 +1,59 @@
+<div class="content-input">
+
+    <h1>Welcome to the Song Suggestor!</h1>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+        <div class="text-input">
+            <label for="titleInput">Song Title</label>
+            <input id="titleInput" type="text" style="width: 100%;"/>
+        </div>
+        <div class="text-input">
+            <label for="artistInput">Song Artist</label>
+            <input id="artistInput" type="text" style="width: 100%;"/>
+        </div>
+    </div>
+
+    <p-toast/>
+    @if (loading) {
+        <p-progress-spinner ariaLabel="loading" />
+    }
+
+    <div style="text-align: left; font-weight: bold;">
+        <label for="lyricsInput">Input Lyrics</label>
+    </div>
+
+    <div class="lyrics-input-div">
+        <textarea id="lyricsInput" pTextarea style="width: 100%; height: 200px; font-style: oblique;" 
+        [autoResize]="true" 
+        [spellcheck]="false" 
+        [disabled]="suggestions !== undefined || loading"
+        [(ngModel)]="inputLyrics">
+        </textarea>
+    </div>
+
+    <div>
+        <p-button class="cta-button" label="Suggest songs" 
+        [disabled]="!inputLyrics || loading"
+        (click)="suggestSongs()"/>
+    </div>
+
+
+    @if (suggestions) {
+        <app-suggestion-result [suggestions]="suggestions"></app-suggestion-result>
+        <div style="margin-top: 20px;">
+            <p-button class="cta-button" label="Show explanation" severity="info" 
+            (click)="explain()"/>
+            <p-button class="cta-button" label="Clear result" severity="warn" 
+            (click)="clear()"/>
+        </div>
+    }
+    @if (suggestions && showExplanation) {
+        <app-suggestion-explanation [inputSongAnalysis]="inputLyricsAnalysis" [suggestions]="suggestions"></app-suggestion-explanation>
+        <div style="margin-top: 20px;">
+            <p-button class="cta-button" label="Hide explanation" severity="warn" 
+            (click)="hideExplanation()"/>
+        </div>
+    }
+    
+
+</div>
