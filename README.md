@@ -21,3 +21,6 @@
    - node: v22.12.0
    - npm: 11.0.0
    - LLM: gpt-4o-mini
+
+Have a look at the following blog article, describing the project.
+https://curioussoftwaredeveloper.com/music-recommendation-lyrics-llm/
